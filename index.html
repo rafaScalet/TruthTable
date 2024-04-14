@@ -4,26 +4,49 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.2.0/mdb.min.css"
+      rel="stylesheet"
+    />
     <title>truthTable</title>
   </head>
-  <body>
-    <main>
+  <body >
+    <main class="container text-center">
       <section>
-        <header id="header">Titulo</header>
-        <div>
-          <label for="">Quantas proposições você quer?</label>
-          <input id="change" oninput="updateProposition()" type="number" />
+        <header class="p-5">
+          <h1 id="header">Heading</h1>
+          <h4 class="mb-3">Subheading</h4>
+        </head>
+        <div class="form-outline w-50 m-auto" data-mdb-input-init>
+          <i class="fas fa-exclamation-circle trailing"></i>
+          <input type="number" oninput="updateProposition()" class="form-control form-icon-trailing" id="change">
+          <label class="form-label">Quantas proposições você quer?</label>
         </div>
       </section>
 
       <article>
-        <table class="table" id="add"></table>
+        <table class="table table-striped table-sm table-bordered mb-3 rounded-5 shadow-4 w-75 m-auto"  id="add">
+            
+        </table>
         <div>
-          <button id="AND">Conjunção</button>
-          <button id="OR">Disjunção</button>
+          <button id="AND" type="button" class="btn btn-dark btn-sm" data-mdb-ripple-init>Conjunção</button>
+          <button id="OR" type="button" class="btn btn-light btn-sm" data-mdb-ripple-init>Disjunção</button>
         </div>
       </article>
     </main>
+
     <script src="truthTable.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.2.0/mdb.umd.min.js"
+    ></script>
   </body>
 </html>
