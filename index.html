@@ -1,18 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <title>truthTable</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>truthTable</title>
+  </head>
+  <body>
     <main>
-      <header></header>
-      <p></p>
       <section>
-        Aqui será adicionado todo os arquivos.
+        <header id="header">Titulo</header>
+        <div>
+          <label for="">Quantas proposições você quer?</label>
+          <input id="change" oninput="updateProposition()" type="number" />
+        </div>
       </section>
+
+      <article>
+        <table class="table" id="add"></table>
+        <div>
+          <button id="AND">Conjunção</button>
+          <button id="OR">Disjunção</button>
+        </div>
+      </article>
     </main>
-</body>
+    <script src="truthTable.js"></script>
+  </body>
 </html>
