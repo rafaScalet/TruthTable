@@ -9,20 +9,21 @@ function generateTruthTable(proposition, operation) {
     const row = [];
 
     for (let c = 0; c < proposition; c++) {
-      row.push(!(r & Math.pow(2, c)) ? 1 : 0);
+      row.push(!(r & Math.pow(2, c)) ? 'V' : 'F');
     }
     if (operation === "AND") {
-      const result = row.reduce((acc, val) => acc && val, true);
-      row.push(result ? "V" : "F");
+      const result = row.reduce((acc, val) => acc && (val === 'V'), true);
+      row.push(result ? 'V' : 'F');
     } else if (operation === "OR") {
-      const result = row.reduce((acc, val) => acc || val, false);
-      row.push(result ? 1 : 0);
+      const result = row.reduce((acc, val) => acc || (val === 'V'), false);
+      row.push(result ? 'V' : 'F');
     }
     table.push(row);
   }
-  // Create table header
+
   const tableHead = document.createElement("thead");
   const headerRow = document.createElement("tr");
+
   alphabet.slice(0, proposition).forEach((variable) => {
     const th = document.createElement("th");
     th.textContent = variable;
@@ -38,7 +39,6 @@ function generateTruthTable(proposition, operation) {
   headerRow.appendChild(resultHeader);
   tableHead.appendChild(headerRow);
 
-  // Create table body
   const tableBody = document.createElement("tbody");
   table.forEach((row) => {
     const tr = document.createElement("tr");
@@ -53,9 +53,8 @@ function generateTruthTable(proposition, operation) {
     tableBody.appendChild(tr);
   });
 
-  // Clear the table before adding a new one
   addTable.innerHTML = "";
-  // Append the head and body to the table
+
   tableHead.classList.add("table-dark");
   addTable.appendChild(tableHead);
   addTable.appendChild(tableBody);
@@ -66,7 +65,7 @@ function generateTruthTable(proposition, operation) {
 function displayTruthTable(truthTable, operation) {
   const headerTruthTable = document.getElementById("header");
   const msg =
-    operation === "AND" ? "truth table conjunction" : "truth table disjunction";
+    operation === "AND" ? "Truth Table Conjunction" : "Truth Table Disjunction";
   headerTruthTable.textContent = msg;
 
   truthTable.forEach((row) => {
@@ -77,6 +76,9 @@ let proposition = 2;
 function updateProposition() {
   const updatePropositionInput = document.getElementById("change");
   proposition = parseInt(updatePropositionInput.value);
+  if(proposition < 2 || proposition == null || isNaN(proposition)){
+    proposition = 2
+  }
   truthTable = generateTruthTable(proposition, operation);
   displayTruthTable(truthTable, operation);
 }
