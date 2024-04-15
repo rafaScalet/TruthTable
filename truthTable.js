@@ -9,11 +9,11 @@ function generateTruthTable(proposition, operation) {
     const row = [];
 
     for (let c = 0; c < proposition; c++) {
-      row.push(r & Math.pow(2, c) ? 1 : 0);
+      row.push(!(r & Math.pow(2, c)) ? 1 : 0);
     }
     if (operation === "AND") {
       const result = row.reduce((acc, val) => acc && val, true);
-      row.push(result ? 1 : 0);
+      row.push(result ? "V" : "F");
     } else if (operation === "OR") {
       const result = row.reduce((acc, val) => acc || val, false);
       row.push(result ? 1 : 0);
@@ -32,11 +32,8 @@ function generateTruthTable(proposition, operation) {
 
   const resultHeader = document.createElement("th");
 
-  if (operation === "AND") {
-    resultHeader.textContent = "p^q";
-  } else if (operation === "OR") {
-    resultHeader.textContent = "p v q";
-  }
+  resultHeader.textContent = "Result";
+
   resultHeader.setAttribute("scope", "col");
   headerRow.appendChild(resultHeader);
   tableHead.appendChild(headerRow);
@@ -69,16 +66,14 @@ function generateTruthTable(proposition, operation) {
 function displayTruthTable(truthTable, operation) {
   const headerTruthTable = document.getElementById("header");
   const msg =
-    operation === "AND"
-      ? "tabela verdade conjunção"
-      : "tabela verdade disjunção";
+    operation === "AND" ? "truth table conjunction" : "truth table disjunction";
   headerTruthTable.textContent = msg;
 
   truthTable.forEach((row) => {
     console.log(row.join(" "));
   });
 }
-let proposition = 2;
+let proposition = 2; 
 function updateProposition() {
   const updatePropositionInput = document.getElementById("change");
   proposition = parseInt(updatePropositionInput.value);

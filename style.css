@@ -17,3 +17,13 @@ body {
   background-blend-mode: multiply, multiply;
   background-repeat: no-repeat;
 }
+
+input[type=number]::-webkit-inner-spin-button { 
+  -webkit-appearance: none;
+  
+}
+input[type=number] { 
+ -moz-appearance: textfield;
+ appearance: textfield;
+
+}
