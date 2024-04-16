@@ -35,3 +35,7 @@ Este projeto consiste em uma aplicação web interativa para gerar e exibir tabe
 ## Licença
 
 Este projeto está licenciado sob a [MIT License](LICENSE).
+
+### Créditos:
+- [Font Awesome](https://fontawesome.com/) pelos ícones.
+- [MDB UI Kit](https://mdbootstrap.com/) pela estilização CSS.
